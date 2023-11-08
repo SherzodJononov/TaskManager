@@ -60,30 +60,32 @@ class filecontrols:
             print("Try again")
 
     def get_work(self):
-        print()
-        print("1)Complete")
-        print("2)Not Complete")
-        print("3)Our task")
-        print()
-        user_input = input("Whick task you want to see ? :")
-        if user_input == "1" :
-            self.get_completed_notcomplet_work("complete")
-       
-        elif user_input == "2" :
-            self.get_completed_notcomplet_work("not complete")
-       
-        elif user_input == '3':
-            try:
-            
-                files = open(f"{self.file_name}\{self.file_name}_work.txt", "r")
-                lines = files.readlines()
-                files = open(f"{self.file_name}\{self.file_name}_work.txt", "r")
-                for index,line in enumerate(lines):
-                        print(line)
+        try:
+            print()
+            print("1)Complete")
+            print("2)Not Complete")
+            print("3)Our task")
+            print()
+            user_input = input("Whick task you want to see ? :")
+            if user_input == "1" :
+                self.get_completed_notcomplet_work("complete")
+        
+            elif user_input == "2" :
+                self.get_completed_notcomplet_work("not complete")
+        
+            elif user_input == '3':
+                try:
+                
+                    files = open(f"{self.file_name}\{self.file_name}_work.txt", "r")
+                    lines = files.readlines()
+                    files = open(f"{self.file_name}\{self.file_name}_work.txt", "r")
+                    for index,line in enumerate(lines):
+                            print(line)
 
-            except:
-                print("Try again")
-
+                except:
+                    print("Try again")
+        except:
+            print("Try again")
     def count_user(self,work):
         
         try:
@@ -119,14 +121,16 @@ class filecontrols:
 
 
     def get_completed_notcomplet_work(self,status):
-        files = open(f"{self.file_name}\{self.file_name}_work.txt", "r")
-        x = files.readlines()
-        for index,value in enumerate(x):
-            if f"status :{status}" in value :
-                print(value)
-            else :
-                continue
-
+        try:
+            files = open(f"{self.file_name}\{self.file_name}_work.txt", "r")
+            x = files.readlines()
+            for index,value in enumerate(x):
+                if f"status :{status}" in value :
+                    print(value)
+                else :
+                    continue
+        except:
+            print("Try again")
 def work(file_name):
 
     try:

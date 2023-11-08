@@ -44,17 +44,18 @@ class User:
             print("Error checking user")
 
     def delete_user(self,user_name,user_password):
-        files = open(f"USERS\{user_name}\{user_name}_password.txt" , "r")
-        if Hash(user_password) == files.readline() :      
-            
-            self.delete_work(user_name)
-                # line = self.line / "USERS" / f"{user_name}" / f"{user_name}_password.txt"   
-                # line.unlink()
-                # line = self.line / "USERS" / f"{user_name}" / f"{user_name}_work.txt"   
-                # line.unlink()
-                # line = self.line / "USERS" / f"{user_name}" 
-                # line.rmdir() 
-        
+       try:
+            # files = open(f"USERS\{user_name}\{user_name}_password.txt" , "r")
+            # if Hash(user_password) == files.readline() :       
+                    # self.delete_work(user_name)
+            line = self.line / "USERS" / f"{user_name}" / f"{user_name}_password.txt"   
+            line.unlink()
+            line = self.line / "USERS" / f"{user_name}" / f"{user_name}_work.txt"   
+            line.unlink()
+            line = self.line / "USERS" / f"{user_name}" 
+            line.rmdir() 
+       except:
+           print("Try again") 
     def show_users(self):
 
         try:
@@ -93,30 +94,35 @@ class User:
 
     
     def count_user(self,user_name):
-        k = 0
-        files = open("USERS.txt", "r")
-        files.read()
-        for index,value in enumerate(files):
-            if value == user_name:
-                k = index
-        return k
+        try:
+            k = 0
+            files = open("USERS.txt", "r")
+            files.read()
+            for index,value in enumerate(files):
+                if value == user_name:
+                    k = index
+            return k
+        except:
+            print("Try again")
 
     def delete_from_users(self,user_name):
-        files = open("USERS.txt", "r")
-        lines = files.readlines()
-        files = open("USERS.txt", "w")
-        for index,line in enumerate(lines):
-            
-            if index == self.count_user(user_name):
-                continue
-            else :
-                files.write(line)
+        try:
+            files = open("USERS.txt", "r")
+            lines = files.readlines()
+            files = open("USERS.txt", "w")
+            for index,line in enumerate(lines):
+                
+                if index == self.count_user(user_name):
+                    continue
+                else :
+                    files.write(line)
+        except:
+            print("Try again")
+    # def delete_password(self,user_name):
+    #     line = self.line / "USERS" / f"{user_name}" / f"{user_name}_password.txt"
+    #     line.unlink()
 
-    def delete_password(self,user_name):
-        line = self.line / "USERS" / f"{user_name}" / f"{user_name}_password.txt"
-        line.unlink()
-
-    def delete_work(self,user_name):
-        line = self.line / "USERS" / f"{user_name}" / f"{user_name}_work.txt"
-        line.unlink()
+    # def delete_work(self,user_name):
+    #     line = self.line / "USERS" / f"{user_name}" / f"{user_name}_work.txt"
+    #     line.unlink()
     
